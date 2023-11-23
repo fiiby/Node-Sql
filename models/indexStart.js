@@ -1,10 +1,10 @@
-const dbConfig =  require('../config');
+const dbConfig =  require('../config/dbConfig');
 const {Sequelize, DataTypes, } = require('sequelize');
 
 const sequelize = new Sequelize(
-    dbConfig.DB,
-    dbConfig.USER,
-    dbConfig.PASSWORD, {
+        dbConfig.DB,
+        dbConfig.USER,
+        dbConfig.PASSWORD, {
         host: dbConfig.HOST,
         dialect:dbConfig.dialect,
         operatorsAliases: false // if errors in ua code will overwrite the errors using this line
@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
 )
 sequelize.authenticate()
 .then(()=>{
-    console.log('database connection succefull...')
+    console.log('database connection successfully...')
 })
 .catch(err =>{
     console

@@ -5,13 +5,16 @@ require('dotenv').config();
 const app = express();
 
 var corOperation = {
-    origin:'http://localhost:3000'
+    origin:'http://localhost:3001'
 }
 
 app.use(cors(corOperation))
+const studentRoute = require('./routes/studentRoutes');
 
 app.use(express.json())
-app.use(express.urlencoded(({extended:true})))
+app.use(express.urlencoded({extended: true}))
+
+app.use('/Student', studentRoute)
 
 const PORT = process.env.PORT || 5000
 
