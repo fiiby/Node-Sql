@@ -6,6 +6,7 @@ const Student = db.student
 
 module.exports = {
 
+// index will hv a global error 404 /the other one look it in node-app.
 
     //add student
     addStudent : async(req, res, next)=>{
@@ -15,8 +16,8 @@ module.exports = {
                 lastName: req.body.lastName,
                 gender: req.body.gender
             }
-            const addStore = await Student.create(info)
-            res.status(200).send(addStore)
+            const addStudent= await Student.create(info)
+            res.status(200).send(addStudent)
         } catch(error) {
             next(error)
         }

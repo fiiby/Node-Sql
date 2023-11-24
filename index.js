@@ -16,6 +16,24 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/Student', studentRoute)
 
+//global error handler:
+app.use((req, res, next)=> {
+    const err = new Error("Not FOund");
+    err.status = 404
+    next(err) 
+})
+
+app.use((err, req, res, next)=> {
+    res.status(err.status || 500)
+    res.send({
+        error:{
+            status: err.status || 500,
+            message: err.message
+        }
+    })
+
+})
+
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, ()=>{
