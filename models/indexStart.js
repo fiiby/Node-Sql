@@ -21,7 +21,9 @@ sequelize.authenticate()
 const  db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
-db.student = require('./studentModel.js')(sequelize, DataTypes)
+
+db.students = require('./studentModel.js')(sequelize, DataTypes)
+db.courses = require('./coursModel.js')(sequelize, DataTypes)
 
 db.sequelize.sync({force:false})
 .then(()=> {

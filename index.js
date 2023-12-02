@@ -9,17 +9,20 @@ var corOperation = {
 }
 
 app.use(cors(corOperation))
-const studentRoute = require('./routes/studentRoutes');
+const studentRoutes = require('./routes/studentRoutes');
+const courseRoutes = require('./routes/courseRoutes')
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.use('/Student', studentRoute)
+app.use('/student', studentRoutes)
+app.use('/course', courseRoutes)
 
 //global error handler:
 app.use((req, res, next)=> {
     const err = new Error("Not FOund");
     err.status = 404
+    
     next(err) 
 })
 
