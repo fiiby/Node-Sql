@@ -10,7 +10,8 @@ var corOperation = {
 
 app.use(cors(corOperation))
 const studentRoutes = require('./routes/studentRoutes');
-const courseRoutes = require('./routes/courseRoutes')
+const courseRoutes = require('./routes/courseRoutes');
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
